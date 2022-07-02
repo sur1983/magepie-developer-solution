@@ -44,7 +44,7 @@ Please also send us your `output.json`.
 
 ### Requirements
 
-* PHP 7.4+
+* PHP 8.1+
 * Composer
 
 ### Setup
@@ -54,5 +54,8 @@ git clone git@github.com:stickeeuk/magpie-scrape-challenge.git
 cd magpie-scrape-challenge
 composer install
 ```
+### Run
 
 To run the scrape you can use `php src/Scrape.php`
+> Encase you face an error on your first run, try re-runing the script using ```php src/Scrape.php``` from your terminal
+
