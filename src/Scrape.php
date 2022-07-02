@@ -19,7 +19,8 @@ class Scrape
             }
         });
         $this->products = array_merge($this->products, $page1);
-        file_put_contents('output.json', str_replace('\\', '', json_encode($this->products)));
+        $data = array_unique($this->products, SORT_REGULAR);
+        file_put_contents('output.json', str_replace('\\', '', json_encode($data)));
     }
 }
 
