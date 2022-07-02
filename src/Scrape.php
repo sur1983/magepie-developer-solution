@@ -25,7 +25,7 @@ class Scrape
             $availability = str_replace('Availability: ', '', $node->filter('div.my-4.text-sm.block.text-center')->text());
             return [
                 "title" => $node->filter('.product-name')->text(),
-                "price" => $node->filter('div.my-8.block.text-center.text-lg')->text(),
+                "price" => floatval((str_replace('£', '', $node->filter('div.my-8.block.text-center.text-lg')->text()))),
                 "imageUrl" => 'https://www.magpiehq.com/developer-challenge/images'.str_replace('..', '',$node->filter('img')->attr('src')),
                 "CapacityMB" => $this->to_mb($node->filter('.product-capacity')->text()),
                 "color" => $node->filter('.rounded-full')->attr('data-colour'),
