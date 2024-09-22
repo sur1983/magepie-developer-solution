@@ -4,11 +4,16 @@
   "require": {
     "symfony/dom-crawler": "^5.2",
     "guzzlehttp/guzzle": "^7.2",
-    "symfony/css-selector": "^5.2"
+    "symfony/css-selector": "^5.2",
+    "symfony/debug": "^4.4",
+    "symfony/http-foundation": "^6.4"
   },
   "autoload": {
     "psr-4": {
       "App\\": "src/"
     }
+  },
+  "require-dev": {
+    "phpunitgen/console": "^6.1"
   }
 }
