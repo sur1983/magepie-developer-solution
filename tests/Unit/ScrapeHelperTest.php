@@ -2,17 +2,17 @@
 
 namespace Tests\Unit;
 
-use App\Product;
+use App\ScrapeHelper;
 use Tests\TestCase;
 
 /**
- * Class ProductTest.
+ * Class ScrapeHelperTest.
  *
- * @covers \App\Product
+ * @covers \App\ScrapeHelper
  */
-final class ProductTest extends TestCase
+final class ScrapeHelperTest extends TestCase
 {
-    private Product $product;
+    private ScrapeHelper $scrapeHelper;
 
     /**
      * {@inheritdoc}
@@ -22,7 +22,7 @@ final class ProductTest extends TestCase
         parent::setUp();
 
         /** @todo Correctly instantiate tested object to use it. */
-        $this->product = new Product();
+        $this->scrapeHelper = new ScrapeHelper();
     }
 
     /**
@@ -32,10 +32,16 @@ final class ProductTest extends TestCase
     {
         parent::tearDown();
 
-        unset($this->product);
+        unset($this->scrapeHelper);
     }
 
-    public function testParseProductData(): void
+    public function testFetchDocument(): void
+    {
+        /** @todo This test is incomplete. */
+        self::markTestIncomplete();
+    }
+
+    public function testChildDomFilter(): void
     {
         /** @todo This test is incomplete. */
         self::markTestIncomplete();

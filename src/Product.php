@@ -2,61 +2,42 @@
 
 namespace App;
 
-use Symfony\Component\HttpFoundation\JsonResponse;
-
-require __DIR__ . '/../vendor/autoload.php';
-
-
 class Product
 {
     /**
-     * @param mixed $documentData
+     * @param mixed $products
      * 
-     * @return JsonResponse
+     * @return array|null
      */
-    public function writeOutputJson($documentData) : JsonResponse
+    public static function parseProductData($products) : ?array
     {
-
-        $filePath = 'output.json';
+       $productData = [];
 
         try {
-            $result = file_put_contents($filePath, json_encode($documentData));
 
-            // Check if writing to the file was successful
-            if (false === $result) {
-                throw new \RuntimeException('Failed to write to the file.');
+            foreach ($products as $product) {
+
+                for($i = 0;$i < count($product);$i++) {
+
+                    $productData[$i] = [
+                      'title' => $products['title'][$i],
+                      'price' => $products['price'][$i],
+                      'image' => $products['image'][$i],
+                      'capacityMB' => $products['capacityMB'][$i],
+                      'colour' => $products['colour'][$i],
+                      'availabilityText' => $products['availabilityText'][$i],
+                      'isAvailable' => $products['isAvailable'][$i],
+                      'shippingText' => $products['shippingText'][$i],
+                      'shippingDate' => $products['shippingDate'][$i]
+
+                    ];
+                }
             }
 
-            return new JsonResponse(['message' => 'File written successfully.'], 200);
-        } catch (\Exception $e) {
-            // Handle the exception and return a JSON response
-            return new JsonResponse([
-                'error' => 'An error occurred while writing to the file.',
-                'message' => $e->getMessage(),
-            ], 500);
+            return $productData;
+
+        } catch (Exception $e) {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
         }
-    }
-
-    /**
-     * @return void
-     */
-    public function execute() : void
-    {
-        $pages = 3;
-
-        for($i = 1;$i <= $pages;$i++) {
-
-            $document[$i] = ProductHelper::fetchDocument('https://www.magpiehq.com/developer-challenge/smartphones/?page=' . $i);
-        }
-
-        $response = $this->writeOutputJson($document);
-
-        $data = json_decode($response->getContent(), true);
-
-        echo $data['message'];
-
     }
 }
-
-$product = new Product;
-$product->execute();
