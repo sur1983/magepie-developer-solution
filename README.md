@@ -61,7 +61,6 @@ To run the scrape you can use `php src/Scrape.php`
 
 * Switch branch "product-data" and pull `git checkout product-data` and `git pull origin product-data`.
 * Run `composer install` command.
-* In src folder (Product.php,ProductHelper.php) two files recieve.
-* Run on command prompt `php -f Product.php`
+* Run on command prompt `php -f Scrape.php`
 * After running the above command you will get the product data in `src/output.json` as expected.
 * PHP Unit test found in `tests/Unit` folder.
